@@ -62,7 +62,8 @@ class CourseList extends React.Component{
                 }
                 
                 { this.props.selection==='university' &&
-                    <ul>{
+                    <ul>
+                    {
                         this.props.data.filter(this.checkUniversity).map(item =><Course data={item} />)
                         }
                     </ul>
