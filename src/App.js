@@ -67,43 +67,36 @@ class App extends Component {
 
     var parent_lookup = {};
     var parent_result = [];
+    var university_lookup = {};
+    var university_result = [];
+    var provider_lookup = {};
+    var provider_result = [];
     
     for (let item, i = 0; item = items[i++];) {
-      let name = item['Parent Subject'];
+      let subjectName = item['Parent Subject'];
 
-      if (!(name in parent_lookup)) {
-        parent_lookup[name] = 1;
-        parent_result.push(name);
+      if (!(subjectName in parent_lookup)) {
+        parent_lookup[subjectName] = 1;
+        parent_result.push(subjectName);
+      }
+
+      let institutionName = item['Universities']['Institutions'];
+
+      if (!(institutionName in university_lookup)) {
+        university_lookup[institutionName] = 1;
+        university_result.push(institutionName);
+      }
+
+      let providerName = item['Provider'];
+
+      if (!(providerName in provider_lookup)) {
+        provider_lookup[providerName] = 1;
+        provider_result.push(providerName);
       }
     }
     this.setState({
       total: Object.keys(items).length
     })
-
-    var university_lookup = {};
-    var university_result = [];
-
-    for (let item, i = 0; item = items[i++];) {
-      let name = item['Universities']['Institutions'];
-
-      if (!(name in university_lookup)) {
-        university_lookup[name] = 1;
-        university_result.push(name);
-      }
-    }
-
-    var provider_lookup = {};
-    var provider_result = [];
-
-    for (let item, i = 0; item = items[i++];) {
-      let name = item['Provider'];
-
-      if (!(name in provider_lookup)) {
-        provider_lookup[name] = 1;
-        provider_result.push(name);
-      }
-    }
-
     this.setState({
       data: json_data,
       parent: parent_result,

@@ -34,49 +34,43 @@ class CourseList extends Component{
             data,
         } = this.props;
 
-        if(selection==='provider' && !this.set ){
-            this.set = true
-            this.setState({
-                item: data.filter(this.checkProvider).length,
-            })
+        
+        let callbackFunction = this.checkProvider;
+
+        if (selection && !this.set) {
+            switch(selection) {
+                case 'provider': 
+                    this.set = true
+                    callbackFunction = this.checkProvider
+                    this.setState({
+                        item: data.filter(this.checkProvider).length,
+                    })
+                    break;
+                case 'parent': 
+                    this.set = true;
+                    callbackFunction = this.checkParent
+                    this.setState({
+                        item: data.filter(this.checkParent).length,
+                    })
+                    break;
+                case 'university': 
+                    this.set = true
+                    callbackFunction = this.checkUniversity
+                    this.setState({
+                        item: data.filter(this.checkUniversity).length,
+                    })
+                    break;
+                default: 
+                    return null;        
+            }
         }
-        if(selection==='parent' && !this.set ){
-            this.set = true
-            this.setState({
-                item: data.filter(this.checkParent).length,
-            })
-        }
-        if(selection==='university' && !this.set ){
-            this.set = true
-            this.setState({
-                item: data.filter(this.checkUniversity).length,
-            })
-        }
+
         return (
             <div className="courseList">
-                <p>Courses found: {this.state.item}</p>
+                <p >Courses found : {this.state.item}</p>
                 { 
-                    selection === 'provider' &&
-                    <ul>{
-                        data.filter(this.checkProvider).map(item =><Course data={item} />)
-                        }
-                    </ul>
+                    data.filter(callbackFunction).map(item =><Course data={item} />)                    
                 }  
-                { 
-                    selection ==='parent' &&
-                    <ul>{
-                        data.filter(this.checkParent).map(item =><Course data={item} />)
-                        }
-                    </ul>
-                }
-                
-                { selection === 'university' &&
-                    <ul>
-                    {
-                        data.filter(this.checkUniversity).map(item =><Course data={item} />)
-                    }
-                    </ul>
-                }
             </div>
         )
     }

@@ -15,31 +15,31 @@ class Selector extends Component{
 
         return (
             <div className="selector row my-4">
-                <div class="col-md-4">
-                    <select name="parent" class="form-control" onChange={updateParent}>
+                <div className="col-md-4">
+                    <select name="parent" className="form-control" onChange={updateParent}>
                         <option value=" " selected>Category</option>
-                            {parent.map(item => 
-                                <option value={item}>
+                            {parent.map((item, index) => 
+                                <option key={index} value={item}>
                                     {item}
                                 </option>
                             )}
                     </select>   
                 </div>
-                <div class="col-md-4">
-                    <select name="provider" class="form-control"  onChange={updateProvider}>
+                <div className="col-md-4">
+                    <select name="provider" className="form-control"  onChange={updateProvider}>
                         <option value=" " selected>Provider</option>
-                            {provider.map(item => 
-                                <option value={item}>
+                            {provider.map((item, index) => 
+                                <option  key={index} value={item}>
                                     {item}
                                 </option>
                             )}
                     </select>
                 </div>
-                <div class="col-md-4">
-                    <select name="university" class="form-control"  onChange={updateUniversity}>
+                <div className="col-md-4">
+                    <select name="university" className="form-control"  onChange={updateUniversity}>
                         <option value=" " selected>University</option>
-                            {university.map(item => 
-                                <option value={item}>
+                            {university.map((item, index) => 
+                                <option  key={index} value={item}>
                                     {item}
                                 </option>
                         )}
