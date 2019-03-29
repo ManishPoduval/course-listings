@@ -1,8 +1,7 @@
-import React from 'react';
-import Course from './course';
+import React, {Component}  from 'react';
+import Course from './Course';
 
-var set = false
-class CourseList extends React.Component{
+class CourseList extends Component{
     constructor(){
         super();
         this.checkProvider = this.checkProvider.bind(this);
@@ -11,65 +10,73 @@ class CourseList extends React.Component{
         this.state = {
             item: 0,
         }
+        this.set = false;
     }
     checkProvider(item){
-        return item['Provider']===this.props.provider;
+        const { provider } = this.props;
+        return item['Provider'] === provider;
     }
     checkParent(item){
-        return item['Parent Subject']===this.props.parent;
+        const { parent } = this.props;
+        return item['Parent Subject'] === parent;
     }
     checkUniversity(item){
-        return item['Universities']['Institutions']===this.props.university;
+        const { university } = this.props;
+        return item['Universities']['Institutions'] === university;
     }
     componentWillReceiveProps(){
-        set=false
+        this.set =false
     }
     render(){
-        if(this.props.selection==='provider' && !set){
-            set=true
+
+        const { 
+            selection,
+            data,
+        } = this.props;
+
+        if(selection==='provider' && !this.set ){
+            this.set = true
             this.setState({
-                item: this.props.data.filter(this.checkProvider).length,
+                item: data.filter(this.checkProvider).length,
             })
         }
-        if(this.props.selection==='parent' && !set){
-            set=true
+        if(selection==='parent' && !this.set ){
+            this.set = true
             this.setState({
-                item: this.props.data.filter(this.checkParent).length,
+                item: data.filter(this.checkParent).length,
             })
         }
-        if(this.props.selection==='university' && !set){
-            set=true
+        if(selection==='university' && !this.set ){
+            this.set = true
             this.setState({
-                item: this.props.data.filter(this.checkUniversity).length,
+                item: data.filter(this.checkUniversity).length,
             })
         }
         return (
             <div className="courseList">
                 <p>Courses found: {this.state.item}</p>
-                { this.props.selection==='provider' &&
+                { 
+                    selection === 'provider' &&
                     <ul>{
-                        this.props.data.filter(this.checkProvider).map(item =><Course data={item} />)
+                        data.filter(this.checkProvider).map(item =><Course data={item} />)
+                        }
+                    </ul>
+                }  
+                { 
+                    selection ==='parent' &&
+                    <ul>{
+                        data.filter(this.checkParent).map(item =><Course data={item} />)
                         }
                     </ul>
                 }
-
                 
-                { this.props.selection==='parent' &&
-                    <ul>{
-                        this.props.data.filter(this.checkParent).map(item =><Course data={item} />)
-                        }
-                    </ul>
-                }
-                
-                { this.props.selection==='university' &&
+                { selection === 'university' &&
                     <ul>
                     {
-                        this.props.data.filter(this.checkUniversity).map(item =><Course data={item} />)
-                        }
+                        data.filter(this.checkUniversity).map(item =><Course data={item} />)
+                    }
                     </ul>
                 }
-
-
             </div>
         )
     }

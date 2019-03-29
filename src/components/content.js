@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-class Header extends React.Component{
+class Content extends Component{
     render(){
         return (
             <p>Title</p>
         )
     }
 }
-export default Header;
+export default Content;

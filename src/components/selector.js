@@ -1,52 +1,51 @@
-import React from 'react';
+import React, {Component}  from 'react';
 
-class Selector extends React.Component{
+class Selector extends Component{
     render(){
+
+        const {
+            updateParent,
+            parent,
+            updateProvider,
+            provider,
+            updateUniversity,
+            university,
+            total,
+        } = this.props;
+
         return (
             <div className="selector row my-4">
                 <div class="col-md-4">
-                <form onSubmit={this.props.updateParent}>
-                <select name="parent" class="form-control">
-                    <option value=" " selected>Category</option>
-                    {this.props.parent.map(item => 
-                        <option value={item}>
-                            {item}
-                        </option>
-                    )}
-                </select>
-                <div class="text-center"><input type="submit" value="search" class="btn btn-primary mx-1 my-1"/></div>
-                </form>
+                    <select name="parent" class="form-control" onChange={updateParent}>
+                        <option value=" " selected>Category</option>
+                            {parent.map(item => 
+                                <option value={item}>
+                                    {item}
+                                </option>
+                            )}
+                    </select>   
                 </div>
-
                 <div class="col-md-4">
-                <form onSubmit={this.props.updateProvider}>
-                <select name="provider" class="form-control">
-                    <option value=" " selected>Provider</option>
-                    {this.props.provider.map(item => 
-                        <option value={item}>
-                            {item}
-                        </option>
-                    )}
-                </select>
-                <div class="text-center"><input type="submit" value="search"  class="btn btn-primary mx-1 my-1"/></div>
-                </form>
+                    <select name="provider" class="form-control"  onChange={updateProvider}>
+                        <option value=" " selected>Provider</option>
+                            {provider.map(item => 
+                                <option value={item}>
+                                    {item}
+                                </option>
+                            )}
+                    </select>
                 </div>
-
-
                 <div class="col-md-4">
-                <form onSubmit={this.props.updateUniversity}>
-                <select name="university" class="form-control">
-                    <option value=" " selected>University</option>
-                    {this.props.university.map(item => 
-                        <option value={item}>
-                            {item}
-                        </option>
-                    )}
-                </select>
-                <div class="text-center"><input type="submit" value="search" class="btn btn-primary mx-1 my-1" /></div>
-                </form>
+                    <select name="university" class="form-control"  onChange={updateUniversity}>
+                        <option value=" " selected>University</option>
+                            {university.map(item => 
+                                <option value={item}>
+                                    {item}
+                                </option>
+                        )}
+                    </select>
                 </div>
-                Total courses: {this.props.total}
+                Total courses: {total}
             </div>
         )
     }

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import Header from './components/header';
-import Selector from './components/selector';
-import CourseList from './components/courseList';
+import Header from './components/Header';
+import Selector from './components/Selector';
+import CourseList from './components/CourseList';
 
 class App extends Component {
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       data: undefined,
       parent: [],
@@ -21,39 +21,40 @@ class App extends Component {
       selection : undefined,
       total: undefined,
     }
-
     this.updateParent = this.updateParent.bind(this);
     this.updateProvider = this.updateProvider.bind(this);
     this.updateUniversity = this.updateUniversity.bind(this);
-
-        // { this.state.data != undefined &&
-        //   <ul>{this.state.data.map(item => <Course data={item} />)}</ul>
-        // }
   }
 
   updateParent(e){
     e.preventDefault();
-    const parentSelected = e.target.elements.parent.value;
+    const parentSelected = e.target.value;
     this.setState({
       currentParent : parentSelected,
+      currentProvider: '',
+      currentUniversity: '',
       selection: 'parent',
     })
   }  
 
   updateUniversity(e){
     e.preventDefault();
-    const universitySelected = e.target.elements.university.value;
+    const universitySelected = e.target.value;
     this.setState({
       currentUniversity : universitySelected,
+      currentParent: '',
+      currentProvider: '',
       selection: 'university',
     })
   } 
   
   updateProvider(e){
     e.preventDefault();
-    const providerSelected = e.target.elements.provider.value;
+    const providerSelected = e.target.value;
     this.setState({
       currentProvider : providerSelected,
+      currentParent: undefined,
+      currentUniversity: undefined,
       selection: 'provider',
     })
   }
@@ -109,31 +110,43 @@ class App extends Component {
       university: university_result,
       provider: provider_result,
     })
-
-    console.log(this.state.university)
   }
 
-  
   render() {
+
+    const {
+      data,
+      parent,
+      provider,
+      university,
+      total,
+      currentProvider,
+      currentParent,
+      currentUniversity,
+      selection,
+    } = this.state
+
     return (
       <div className="first">
         <Header />
-        { this.state.data != undefined &&
-          <Selector parent={this.state.parent} 
-              provider={this.state.provider} 
-              university={this.state.university}
+        { 
+          data != undefined &&
+          <Selector parent={parent} 
+              provider={provider} 
+              university={university}
               updateParent={this.updateParent}
               updateProvider={this.updateProvider}   
               updateUniversity={this.updateUniversity}  
-              total={this.state.total}
+              total={total}
           />
         }
-        { this.state.data != undefined &&
-          <CourseList data={this.state.data} 
-              provider={this.state.currentProvider} 
-              parent={this.state.currentParent}
-              university={this.state.currentUniversity}
-              selection={this.state.selection}
+        { 
+          data != undefined &&
+          <CourseList data={data} 
+              provider={currentProvider} 
+              parent={currentParent}
+              university={currentUniversity}
+              selection={selection}
           />
         }
       </div>
