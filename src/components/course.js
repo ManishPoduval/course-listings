@@ -22,6 +22,9 @@ class Course extends Component{
                         <div class="col-md-4"><a href={data['Url']} target='_blank'>Course Link</a></div>
                         <div class="col-md-4"><a href={data['Video(Url)']} target='_blank'>Video Link</a></div>
                         <div class="col-md-4">{data['Next Session Date']}</div>
+                        {
+                            data['Length'] ? (<div class="col-md-4">Length: {data['Length']}</div>) : null
+                        }
                     </div>
                 </div>
                 </div>

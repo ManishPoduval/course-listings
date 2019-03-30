@@ -14,10 +14,10 @@ class App extends Component {
       child: [],
       provider: [],
       university: [],
-      currentParent: undefined,
+      currentParent: null,
       currentChild: undefined,
-      currentProvider: undefined,
-      currentUniversity: undefined,
+      currentProvider: null,
+      currentUniversity: null,
       selection : undefined,
       total: undefined,
     }
@@ -29,10 +29,14 @@ class App extends Component {
   updateParent(e){
     e.preventDefault();
     const parentSelected = e.target.value;
+    var universityDropdown = document.getElementById("university");
+    universityDropdown.selectedIndex = 0;
+    let providertDropdown = document.getElementById("provider");
+    providertDropdown.selectedIndex = 0;
     this.setState({
       currentParent : parentSelected,
-      currentProvider: '',
-      currentUniversity: '',
+      currentProvider: null,
+      currentUniversity: null,
       selection: 'parent',
     })
   }  
@@ -40,10 +44,14 @@ class App extends Component {
   updateUniversity(e){
     e.preventDefault();
     const universitySelected = e.target.value;
+    let parentDropdown = document.getElementById("parent");
+    parentDropdown.selectedIndex = 0;
+    let providertDropdown = document.getElementById("provider");
+    providertDropdown.selectedIndex = 0;
     this.setState({
       currentUniversity : universitySelected,
-      currentParent: '',
-      currentProvider: '',
+      currentParent: null,
+      currentProvider: null,
       selection: 'university',
     })
   } 
@@ -51,10 +59,14 @@ class App extends Component {
   updateProvider(e){
     e.preventDefault();
     const providerSelected = e.target.value;
+    let parentDropdown = document.getElementById("parent");
+    parentDropdown.selectedIndex = 0;
+    var universityDropdown = document.getElementById("university");
+    universityDropdown.selectedIndex = 0;
     this.setState({
       currentProvider : providerSelected,
-      currentParent: undefined,
-      currentUniversity: undefined,
+      currentParent: null,
+      currentUniversity: null,
       selection: 'provider',
     })
   }
@@ -129,7 +141,7 @@ class App extends Component {
               university={university}
               updateParent={this.updateParent}
               updateProvider={this.updateProvider}   
-              updateUniversity={this.updateUniversity}  
+              updateUniversity={this.updateUniversity}
               total={total}
           />
         }
@@ -140,6 +152,7 @@ class App extends Component {
               parent={currentParent}
               university={currentUniversity}
               selection={selection}
+              total={total}
           />
         }
       </div>

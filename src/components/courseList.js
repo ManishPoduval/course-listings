@@ -2,15 +2,18 @@ import React, {Component}  from 'react';
 import Course from './Course';
 
 class CourseList extends Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.checkProvider = this.checkProvider.bind(this);
+        this.checkRecentListing = this.checkRecentListing.bind(this);
         this.checkParent = this.checkParent.bind(this);
         this.checkUniversity = this.checkUniversity.bind(this);
-        this.state = {
-            item: 0,
-        }
+        this.itemCount = this.props.total;
         this.set = false;
+    }
+    checkRecentListing(item){
+        const { provider } = this.props;
+        return  item['Next Session Date'];
     }
     checkProvider(item){
         const { provider } = this.props;
@@ -35,30 +38,24 @@ class CourseList extends Component{
         } = this.props;
 
         
-        let callbackFunction = this.checkProvider;
+        let callbackFunction = this.checkRecentListing;
 
         if (selection && !this.set) {
             switch(selection) {
                 case 'provider': 
                     this.set = true
                     callbackFunction = this.checkProvider
-                    this.setState({
-                        item: data.filter(this.checkProvider).length,
-                    })
+                    this.itemCount = data.filter(this.checkProvider).length;
                     break;
                 case 'parent': 
                     this.set = true;
                     callbackFunction = this.checkParent
-                    this.setState({
-                        item: data.filter(this.checkParent).length,
-                    })
+                    this.itemCount = data.filter(this.checkParent).length;
                     break;
                 case 'university': 
                     this.set = true
                     callbackFunction = this.checkUniversity
-                    this.setState({
-                        item: data.filter(this.checkUniversity).length,
-                    })
+                    this.itemCount = data.filter(this.checkUniversity).length;
                     break;
                 default: 
                     return null;        
@@ -67,7 +64,7 @@ class CourseList extends Component{
 
         return (
             <div className="courseList">
-                <p >Courses found : {this.state.item}</p>
+                <div className="totalCount">Courses listed : {this.itemCount}</div>
                 { 
                     data.filter(callbackFunction).map(item =><Course data={item} />)                    
                 }  

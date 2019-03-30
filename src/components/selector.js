@@ -16,19 +16,23 @@ class Selector extends Component{
         return (
             <div className="selector row my-4">
                 <div className="col-md-4">
-                    <select name="parent" className="form-control" onChange={updateParent}>
-                        <option value=" " selected>Category</option>
+                    <label>Category</label>
+                    <select id="parent" className="form-control" onChange={updateParent}>
+                        <option selected>None</option>
                             {parent.map((item, index) => 
-                                <option key={index} value={item}>
+                                item && 
+                                <option  key={index} value={item}>
                                     {item}
                                 </option>
                             )}
                     </select>   
                 </div>
                 <div className="col-md-4">
-                    <select name="provider" className="form-control"  onChange={updateProvider}>
-                        <option value=" " selected>Provider</option>
+                    <label>Provider</label>
+                    <select id="provider" className="form-control"  onChange={updateProvider}>
+                        <option selected>None</option>
                             {provider.map((item, index) => 
+                                item && 
                                 <option  key={index} value={item}>
                                     {item}
                                 </option>
@@ -36,16 +40,20 @@ class Selector extends Component{
                     </select>
                 </div>
                 <div className="col-md-4">
-                    <select name="university" className="form-control"  onChange={updateUniversity}>
-                        <option value=" " selected>University</option>
+                    <label>University</label>
+                    <select id="university" className="form-control"  onChange={updateUniversity}>
+                        <option selected>None</option>
                             {university.map((item, index) => 
+                                item && 
                                 <option  key={index} value={item}>
                                     {item}
                                 </option>
                         )}
                     </select>
                 </div>
-                Total courses: {total}
+                <div className="col-md-4">
+                    <div className="totalCount">Total courses: {total}</div>
+                </div>
             </div>
         )
     }
