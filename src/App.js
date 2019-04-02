@@ -39,7 +39,7 @@ class App extends Component {
       currentUniversity: null,
       selection: 'parent',
     })
-  }  
+  }
 
   updateUniversity(e){
     e.preventDefault();
@@ -54,8 +54,8 @@ class App extends Component {
       currentProvider: null,
       selection: 'university',
     })
-  } 
-  
+  }
+
   updateProvider(e){
     e.preventDefault();
     const providerSelected = e.target.value;
@@ -83,7 +83,7 @@ class App extends Component {
     var university_result = [];
     var provider_lookup = {};
     var provider_result = [];
-    
+
     for (let item, i = 0; item = items[i++];) {
       let subjectName = item['Parent Subject'];
 
@@ -134,21 +134,21 @@ class App extends Component {
     return (
       <div className="first">
         <Header />
-        { 
-          data != undefined &&
-          <Selector parent={parent} 
-              provider={provider} 
+        {
+          data !== undefined &&
+          <Selector parent={parent}
+              provider={provider}
               university={university}
               updateParent={this.updateParent}
-              updateProvider={this.updateProvider}   
+              updateProvider={this.updateProvider}
               updateUniversity={this.updateUniversity}
               total={total}
           />
         }
-        { 
-          data != undefined &&
-          <CourseList data={data} 
-              provider={currentProvider} 
+        {
+          data !== undefined &&
+          <CourseList data={data}
+              provider={currentProvider}
               parent={currentParent}
               university={currentUniversity}
               selection={selection}

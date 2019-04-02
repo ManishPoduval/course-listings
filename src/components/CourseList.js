@@ -1,5 +1,7 @@
 import React, {Component}  from 'react';
 import Course from './Course';
+import Pagination from "react-js-pagination";
+
 
 class CourseList extends Component{
     constructor(props){
@@ -8,9 +10,19 @@ class CourseList extends Component{
         this.checkRecentListing = this.checkRecentListing.bind(this);
         this.checkParent = this.checkParent.bind(this);
         this.checkUniversity = this.checkUniversity.bind(this);
+        this.handlePageChange = this.handlePageChange.bind(this)
         this.itemCount = this.props.total;
         this.set = false;
+        this.state = {
+            activePage: 1
+        };
     }
+
+    handlePageChange(pageNumber) {
+        console.log(`active page is ${pageNumber}`);
+        this.setState({activePage: pageNumber});
+    }
+
     checkRecentListing(item){
         const { provider } = this.props;
         return  item['Next Session Date'];

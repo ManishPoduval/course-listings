@@ -8,22 +8,26 @@ class Course extends Component{
 
         return (
             <div className="course">
-                <div class="card point mt-2">
-                    <div class="card-header">
+                <div className="card point mt-2">
+                    <div className="card-header">
                         {data['Course Id']} : {data['Course Name']}
                     </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-6">Category: {data['Parent Subject']}</div>
-                        <div class="col-md-6">Sub Category: {data['Child Subject']}</div>
+                <div className="card-body">
+                    <div className="row">
+                        <div className="col-md-6">Category: {data['Parent Subject']}</div>
+                        <div className="col-md-6">Sub Category: {data['Child Subject']}</div>
                     </div>
                     Taught in : {data['Universities']['Institutions']}<br />
-                    <div class="row">
-                        <div class="col-md-4"><a href={data['Url']} target='_blank'>Course Link</a></div>
-                        <div class="col-md-4"><a href={data['Video(Url)']} target='_blank'>Video Link</a></div>
-                        <div class="col-md-4">{data['Next Session Date']}</div>
+                    <div className="row">
+                        <div className="col-md-4"><a href={data['Url']} target='_blank'>Course Link</a></div>
                         {
-                            data['Length'] ? (<div class="col-md-4">Length: {data['Length']}</div>) : null
+                            data['Video(Url)'] ? (
+                                <div className="col-md-4"><a href={data['Video(Url)'].split('|||')[0]} target='_blank'>Video Link</a></div>
+                            ) : null
+                        }
+                        <div className="col-md-4">{data['Next Session Date']}</div>
+                        {
+                            data['Length'] ? (<div className="col-md-4">Length: {data['Length']}</div>) : null
                         }
                     </div>
                 </div>
