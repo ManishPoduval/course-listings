@@ -1,4 +1,4 @@
-# PROJECT - Course Listing
+# PROJECT - Course Finder
 
 A simple React application that lists a set of courses and allows the user to filter based on university, platform and sort based on length and date.
 
