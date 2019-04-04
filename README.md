@@ -1,3 +1,18 @@
+# PROJECT - Course Listing
+
+A simple React application that lists a set of courses and allows the user to filter based on university, platform and sort based on length and date.
+
+After you run the app you shoul be able to see 
+
+![](https://github.com/ManishPoduval/course-listings/blob/master/src/images/home1.png)
+
+and some pagination implemented when you scroll below as well 
+
+![](https://github.com/ManishPoduval/course-listings/blob/master/src/images/home2.png)
+
+
+# STEPS TO RUN 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
