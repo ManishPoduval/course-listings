@@ -9,12 +9,12 @@ class Pagination extends React.Component {
       this.state = {
         todos: [],
         currentPage: 1,
-          todosPerPage: 3,
-          upperPageBound: 3,
+          todosPerPage: 5,
+          upperPageBound: 5,
           lowerPageBound: 0,
           isPrevBtnActive: 'disabled',
           isNextBtnActive: '',
-          pageBound: 3
+          pageBound: 5
       };
       this.handleClick = this.handleClick.bind(this);
       this.btnDecrementClick = this.btnDecrementClick.bind(this);

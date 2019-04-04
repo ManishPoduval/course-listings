@@ -114,7 +114,7 @@ class CourseList extends Component{
             this.setState({
                 date: 'asc', 
                 dataArray: this.onfilterDate(data, false),
-                dateText:'DATE-ASC', 
+                dateText:'DATE-DESC', 
                 lengthText:'LEN'
             })
         }
@@ -122,7 +122,7 @@ class CourseList extends Component{
             this.setState({
                 date: 'desc', 
                 dataArray:this.onfilterDate(data, true),
-                dateText:'DATE-DESC', 
+                dateText:'DATE-ASC', 
                 lengthText:'LEN'
             })
         }
@@ -135,7 +135,7 @@ class CourseList extends Component{
                 length: 'asc', 
                 dataArray: this.lengthSort(data, false),
                 dateText:'DATE', 
-                lengthText:'LEN-ASC'
+                lengthText:'LEN-DESC'
             })
         }
         else{
@@ -143,7 +143,7 @@ class CourseList extends Component{
                 length: 'desc', 
                 dataArray: this.lengthSort(data, true),
                 dateText:'DATE', 
-                lengthText:'LEN-DESC'
+                lengthText:'LEN-ASC'
             })
         }
     }
