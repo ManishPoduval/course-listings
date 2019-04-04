@@ -10,7 +10,7 @@ class Course extends Component{
             <div className="course">
                 <div className="card point mt-2">
                     <div className="card-header">
-                        {data['Course Id']} : {data['Course Name']}
+                     {data['Course Name']}
                     </div>
                 <div className="card-body">
                     <div className="row">
@@ -20,11 +20,7 @@ class Course extends Component{
                     Taught in : {data['Universities']['Institutions']}<br />
                     <div className="row">
                         <div className="col-md-4"><a href={data['Url']} target='_blank'>Course Link</a></div>
-                        {
-                            data['Video(Url)'] ? (
-                                <div className="col-md-4"><a href={data['Video(Url)'].split('|||')[0]} target='_blank'>Video Link</a></div>
-                            ) : null
-                        }
+                        <div className="col-md-4"><a href={data['Video(Url)']} target='_blank'>Video Link</a></div>
                         <div className="col-md-4">{data['Next Session Date']}</div>
                         {
                             data['Length'] ? (<div className="col-md-4">Length: {data['Length']}</div>) : null

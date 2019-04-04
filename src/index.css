@@ -37,3 +37,51 @@ h1 {
 .first{
   margin-bottom: 20px;
 }
+
+.filterCount {
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.filterWrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filterContianer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.courseList {
+  display: flex;
+  flex-direction: column;
+}
+
+.filterLabel {
+  margin-bottom:'none';
+  color: white;
+  margin-right: 15px;
+}
+
+.sortButtons {
+  margin-right: 10px;
+  border: none;
+  min-height: 30px;
+  border-radius: 5px;
+  min-width: 75px;
+  background-image: linear-gradient(to right,#fc6076,#ff9231);
+  font-size: 14px;
+  color: white;
+  box-shadow: 0 2px 3px 0 rgba(247,95,30,0.2);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none !important;
+}
+
+.sortButtons:hover {
+  text-decoration: none !important;
+}

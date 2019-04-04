@@ -1,0 +1,15 @@
+.buttonCust{
+    padding:5px 10px;
+    background-image: linear-gradient(to left,#8c3fff,#5c72ff);
+    border-radius: 5px;
+    color: white;
+    font-size: 14x;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+.active a{
+    background-image: linear-gradient(to bottom,#97a598,#a1e508);
+    text-decoration: none;
+    color: white;
+}
